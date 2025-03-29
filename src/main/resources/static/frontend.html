@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Trie Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-container h2 {
+            margin-top: 0;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: calc(100% - 22px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .form-group input:focus {
+            border-color: #007bff;
+        }
+        .form-group input[type="submit"] {
+            width: 100%;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .form-group input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<div class="form-container">
+    <h2>Trie Form</h2>
+    <form action="/trie/search" method="post">
+        <div class="form-group">
+            <label for="key">Key:</label>
+            <input type="text" id="key" name="key">
+        </div>
+        <div class="form-group">
+            <label for="subword">Subword:</label>
+            <input type="text" id="subword" name="subword">
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+</div>
+</body>
+</html>

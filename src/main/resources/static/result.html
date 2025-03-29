@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interaction Result</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-5">Drug Interaction Checker</h1>
+    <form id="interactionForm" class="mt-4">
+        <div class="form-group">
+            <label for="drug1">Drug 1</label>
+            <input type="text" class="form-control" id="drug1" name="drug1" required>
+        </div>
+        <div class="form-group">
+            <label for="drug2">Drug 2</label>
+            <input type="text" class="form-control" id="drug2" name="drug2" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Check Interaction</button>
+    </form>
+    <div id="result" class="mt-4"></div>
+</div>
+
+<script>
+    document.getElementById('interactionForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        var drug1 = document.getElementById('drug1').value;
+        var drug2 = document.getElementById('drug2').value;
+
+        fetch('/api/check?drug1=' + drug1 + '&drug2=' + drug2, {
+            method: 'POST'
+        })
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('result').innerHTML = '<div class="alert alert-info">' + data + '</div>';
+        })
+        .catch(error => {
+            document.getElementById('result').innerHTML = '<div class="alert alert-danger">Error: ' + error.message + '</div>';
+        });
+    });
+</script>
+</body>
+</html>
